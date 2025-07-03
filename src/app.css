@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+/* Import Tailwind base styles */
+@tailwind base;
+/* Import Tailwind component styles */
+@tailwind components;
+/* Import Tailwind utility classes */
+@tailwind utilities;
+
+/* Set right-to-left direction for the entire app */
