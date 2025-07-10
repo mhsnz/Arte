@@ -37,7 +37,7 @@
   .container {
     max-width: 1280px;
   }
-  .font-cursive {
+  .font-bold {
     font-family: 'Dancing Script', cursive;
   }
   .line-clamp-2 {

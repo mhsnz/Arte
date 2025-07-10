@@ -30,6 +30,7 @@
 		]
 	},
 	"dependencies": {
-		"@iconify/svelte": "^5.0.0"
+		"@iconify/svelte": "^5.0.0",
+		"firebase": "^11.10.0"
 	}
 }

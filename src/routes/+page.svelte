@@ -1,12 +1,11 @@
 <!-- Import components from lib/components directory -->
 <script lang="ts">
-  import Slider from '$lib/components/Slider.svelte';
+  import Slider from './Home/Slider.svelte';
+  import Exhibition from './Home/Exhibition.svelte';
 //   import SqCat from '$lib/components/SqCat.svelte';
-  import Exhibition from '$lib/components/exhibition.svelte';
-  import Clumn from '$lib/components/Clumn.svelte';
-  import Productfeature from '$lib/components/Productfeature.svelte';
-  import Blogfeature from '$lib/components/Blogfeature.svelte';
-
+  import Clumn from './Home/Clumn.svelte';
+  import Productfeature from './Home/Productfeature.svelte';
+  import Blogfeature from './Home/Blogfeature.svelte';
   // Type the Exhibition component
   import type { SvelteComponent } from 'svelte';
   const ExhibitionComponent: typeof Exhibition = Exhibition;
@@ -14,7 +13,9 @@
   // Debug import
   console.log('Exhibition component imported:', ExhibitionComponent !== undefined);
 </script>
-
+<svelte:head>
+  <title>Londeville</title>
+</svelte:head>
 <!-- Main page container with vertical spacing -->
 <div class="space-y-12">
   <Slider />

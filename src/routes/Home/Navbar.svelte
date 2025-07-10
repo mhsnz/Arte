@@ -9,8 +9,8 @@
     { name: 'Home', href: '/' },
     { name: 'Product Categories', href: '/products' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'About Us', href: '/about' },
+    { name: 'Contact Us', href: 'ContactUs' },
+    { name: 'About Us', href: 'AboutUs' },
   ];
 
   function toggleMenu() {
