@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade, slide } from 'svelte/transition';
   import Icon from '@iconify/svelte';
+  import { user } from '$lib/authStore';
 
   let isMenuOpen = false;
   let isSearchOpen = false;
@@ -9,8 +10,8 @@
     { name: 'Home', href: '/' },
     { name: 'Product Categories', href: '/products' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contact Us', href: 'ContactUs' },
-    { name: 'About Us', href: 'AboutUs' },
+    { name: 'Contact Us', href: '/ContactUs' },
+    { name: 'About Us', href: '/AboutUs' },
   ];
 
   function toggleMenu() {
@@ -23,6 +24,10 @@
 
   function toggleSearch() {
     isSearchOpen = !isSearchOpen;
+  }
+
+  function getUserLink() {
+    return $user ? '/Dashboard' : '/Registration';
   }
 </script>
 
@@ -57,7 +62,7 @@
       <div class="flex items-center space-x-4 md:space-x-reverse">
         <!-- Icons for desktop (User and Search) -->
         <div class="hidden md:flex items-center space-x-4">
-          <a href="/auth" class="hover:text-[#d49f4c] transition-colors p-2">
+          <a href={getUserLink()} class="hover:text-[#d49f4c] transition-colors p-2">
             <Icon icon="mdi:account" class="w-5 h-5" />
           </a>
           <button on:click={toggleSearch} class="hover:text-[#d49f4c] transition-colors p-2">
@@ -82,17 +87,18 @@
           </button>
         </div>
         <div class="px-4 mt-4">
-          <a href="/login" class="block w-full text-center py-2 text-base font-medium bg-gray-800 hover:bg-gray-700 rounded-md">Login / Sign Up</a>
+          <a href={getUserLink()} on:click={closeMenu} class="block w-full text-center py-2 text-base font-medium bg-gray-800 hover:bg-gray-700 rounded-md">
+            {$user ? 'Dashboard' : 'Login / Sign Up'}
+          </a>
           <div class="border-t border-gray-600 mt-2"></div>
         </div>
         <!-- Mobile menu items container -->
         <div class="px-2 pt-4 pb-3 space-y-1 text-left">
           {#each navItems as item}
-            <a href={item.href} class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800 hover:text-[#d49f4c]">
+            <a href={item.href} on:click={closeMenu} class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800 hover:text-[#d49f4c]">
               {item.name}
             </a>
           {/each}
-    
         </div>
       </div>
     {/if}

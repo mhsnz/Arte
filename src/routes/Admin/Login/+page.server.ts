@@ -1,5 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import { users } from '$lib/users';
 
 export const actions: Actions = {
   default: async ({ request, cookies }) => {
@@ -9,13 +10,15 @@ export const actions: Actions = {
 
     console.log('Login attempt:', { username, password }); // دیباگ
 
-    if (username === 'mhsnz' && password === 'zxqpjaiz') {
+    const user = users.find((u) => u.role === 'Admin' && u.username === username && u.password === password);
+
+    if (user) {
       // تنظیم cookie
       cookies.set('auth', 'true', {
         path: '/',
         httpOnly: true,
         sameSite: 'strict',
-        maxAge: 5 * 60 
+        maxAge: 5 * 60 // 5 دقیقه (از کد شما)
       });
       console.log('Cookie set, redirecting to /Admin');
       throw redirect(303, '/Admin');

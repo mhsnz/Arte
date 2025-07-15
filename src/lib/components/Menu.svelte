@@ -6,7 +6,7 @@
 <div class="w-64 bg-gray-800 min-h-screen flex flex-col p-4">
   <div class="flex justify-end mb-4">
     <a
-      href="/Admin/Login"
+      href="/Admin/Logout"
       class="flex items-center justify-center w-10 h-10 bg-red-600 rounded-full hover:bg-red-700 transition-colors"
       title="Logout"
     >
