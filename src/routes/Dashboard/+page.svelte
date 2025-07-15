@@ -46,7 +46,7 @@
           favorites = favoritesSnap.data().items || [];
         }
       } else {
-        goto('/Registration');
+        goto('/login');
       }
     });
 
@@ -71,11 +71,12 @@
   // Handle logout
   async function handleLogout() {
     await signOut(auth);
-    goto('/Registration');
+    goto('/login');
   }
 
   // Handle back button to return to sidebar on mobile
-  function handleBack() {
+  function handleBack(event: MouseEvent) {
+    event.stopPropagation(); // Prevent event bubbling
     selectedBox = 'sidebar';
   }
 </script>
@@ -253,11 +254,11 @@
 
       <!-- Dynamic Content (shown when a menu item is selected) -->
       {#if selectedBox !== 'sidebar'}
-        <div class="w-full p-8 flex flex-col relative">
+        <div class="w-full p-8 flex flex-col relative overflow-y-auto">
           <!-- Back Button -->
           {#if selectedBox !== 'welcome'}
             <button
-              class="absolute top-4 left-4 text-2xl"
+              class="absolute top-4 left-4 text-2xl z-10"
               on:click={handleBack}
             >
               <Icon icon="mdi:arrow-left" width="24" height="24" />
